@@ -5,9 +5,9 @@
 
 已知随机过程：
 
-$$
+```math
 z(t)=m(t)\cos(\omega_0t+\theta)
-$$
+```
 
 其中：
 
@@ -17,13 +17,13 @@ $$
 
 原随机过程的自相关函数为：
 
-$$
+```math
 R_m(\tau)=
 \begin{cases}
 1-|\tau|,&|\tau|<1\\
 0,&\text{其他}
 \end{cases}
-$$
+```
 
 ## 2. 数学推导
 
@@ -31,59 +31,59 @@ $$
 
 首先求均值：
 
-$$
+```math
 E[z(t)]
 =
 E[m(t)\cos(\omega_0t+\theta)]
-$$
+```
 
 利用统计独立性：
 
-$$
+```math
 E[z(t)]
 =
 E[m(t)]E[\cos(\omega_0t+\theta)]
-$$
+```
 
 由于随机变量 $\theta$ 服从均匀分布：
 
-$$
+```math
 E[\cos(\omega_0t+\theta)]
 =
 \frac{1}{2\pi}
 \int_0^{2\pi}
 \cos(\omega_0t+\theta)d\theta
 =0
-$$
+```
 
 因此：
 
-$$
+```math
 \boxed{E[z(t)]=0}
-$$
+```
 
 接下来求自相关函数：
 
-$$
+```math
 R_z(t_1,t_2)
 =
 E[z(t_1)z(t_2)]
-$$
+```
 
 代入：
 
-$$
+```math
 \begin{aligned}
 R_z(t_1,t_2)
 =&E[m(t_1)m(t_2)\\
 &\cdot\cos(\omega_0t_1+\theta)\\
 &\cdot\cos(\omega_0t_2+\theta)]
 \end{aligned}
-$$
+```
 
 利用统计独立性：
 
-$$
+```math
 \begin{aligned}
 R_z(t_1,t_2)
 =&R_m(t_1-t_2)\\
@@ -91,136 +91,136 @@ R_z(t_1,t_2)
 \cos(\omega_0t_1+\theta)
 \cos(\omega_0t_2+\theta)]
 \end{aligned}
-$$
+```
 
 利用积化和差公式：
 
-$$
+```math
 \cos A\cos B
 =
 \frac12[\cos(A-B)+\cos(A+B)]
-$$
+```
 
 对均匀分布的随机相位求期望：
 
-$$
+```math
 E[\cos(A+B)]=0
-$$
+```
 
 因此：
 
-$$
+```math
 E[\cos A\cos B]
 =
 \frac12\cos(A-B)
-$$
+```
 
 最终：
 
-$$
+```math
 \boxed{
 R_z(\tau)
 =
 \frac12R_m(\tau)\cos(\omega_0\tau)
 }
-$$
+```
 
 由于均值为常数，自相关函数只与时间差有关，因此：
 
-$$
+```math
 \boxed{z(t)\text{ 是广义平稳随机过程}}
-$$
+```
 
 ### 2.2 求自相关函数
 
 将题目给出的 $R_m(\tau)$ 代入：
 
-$$
+```math
 R_z(\tau)=
 \begin{cases}
 \frac12(1-|\tau|)\cos(\omega_0\tau),
 &|\tau|<1\\
 0,&\text{其他}
 \end{cases}
-$$
+```
 
 ### 2.3 求功率谱密度
 
 采用傅里叶变换定义：
 
-$$
+```math
 P_z(f)=
 \int_{-\infty}^{+\infty}
 R_z(\tau)e^{-j2\pi f\tau}d\tau
-$$
+```
 
 首先求原随机过程的功率谱密度：
 
-$$
+```math
 P_m(f)=
 \mathcal F\{R_m(\tau)\}
-$$
+```
 
 利用三角函数的傅里叶变换：
 
-$$
-\boxed{P_m(f)=\operatorname{sinc}^2(f)}
-$$
+```math
+\boxed{P_m(f)=\mathrm{sinc}^2(f)}
+```
 
 其中：
 
-$$
-\operatorname{sinc}(x)=
+```math
+\mathrm{sinc}(x)=
 \frac{\sin(\pi x)}{\pi x}
-$$
+```
 
 令：
 
-$$
+```math
 f_0=\frac{\omega_0}{2\pi}
-$$
+```
 
 根据傅里叶变换的频移性质：
 
-$$
+```math
 \mathcal F\{R_m(\tau)\cos(2\pi f_0\tau)\}
 =
 \frac12[
 P_m(f-f_0)+P_m(f+f_0)]
-$$
+```
 
 因此：
 
-$$
+```math
 \boxed{
 P_z(f)=\frac14
 \left[
-\operatorname{sinc}^2(f-f_0)
+\mathrm{sinc}^2(f-f_0)
 +
-\operatorname{sinc}^2(f+f_0)
+\mathrm{sinc}^2(f+f_0)
 \right]
 }
-$$
+```
 
 ### 2.4 求平均功率
 
 根据自相关函数的定义：
 
-$$
+```math
 S=E[z^2(t)]=R_z(0)
-$$
+```
 
 代入：
 
-$$
+```math
 S=\frac12(1-0)\cos(0)
-$$
+```
 
 最终：
 
-$$
+```math
 \boxed{S=\frac12}
-$$
+```
 
 ## 3. 工程结构
 
@@ -252,9 +252,9 @@ uv run python A01/main.py
 
 默认载波角频率：
 
-$$
+```math
 \omega_0=2\pi\ \mathrm{rad/s}
-$$
+```
 
 指定载波角频率：
 
